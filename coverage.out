@@ -1,0 +1,17 @@
+mode: set
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/app.go:41.25,42.20 1 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/app.go:42.20,69.3 7 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/app.go:71.2,71.12 1 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/app.go:78.44,80.58 2 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/app.go:80.58,82.3 1 0
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/app.go:83.2,83.23 1 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/app.go:91.40,96.2 1 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/health.go:35.45,58.2 3 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/health.go:62.47,67.2 1 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/health.go:70.49,77.47 2 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/health.go:77.47,80.3 2 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/health.go:87.2,87.23 1 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/health.go:92.48,99.12 4 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/health.go:99.12,102.3 2 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/health.go:104.2,108.5 1 1
+github.com/akingundogdu/production-ready-go-backend-architecture/actions/render.go:9.13,13.2 1 1

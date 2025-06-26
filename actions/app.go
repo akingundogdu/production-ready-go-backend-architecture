@@ -58,7 +58,14 @@ func App() *buffalo.App {
 		// Set the request content type to JSON
 		app.Use(contenttype.Set("application/json"))
 
-		app.GET("/", HomeHandler)
+		// Health check routes
+		// These should be at the top for quick health monitoring
+		app.GET("/health", HealthHandler)
+		app.GET("/health/live", LivenessHandler)
+		app.GET("/health/ready", ReadinessHandler)
+		
+		// API routes will be added here as we develop more features
+		// API v1 group will be added in later phases
 	})
 
 	return app
