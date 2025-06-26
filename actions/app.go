@@ -64,8 +64,41 @@ func App() *buffalo.App {
 		app.GET("/health/live", LivenessHandler)
 		app.GET("/health/ready", ReadinessHandler)
 		
-		// API routes will be added here as we develop more features
-		// API v1 group will be added in later phases
+		// Authentication routes (public)
+		authGroup := app.Group("/auth")
+		{
+			authGroup.POST("/register", RegisterHandler)
+			authGroup.POST("/login", LoginHandler)
+			
+			// Protected auth routes (require valid JWT)
+			protectedAuth := authGroup.Group("")
+			protectedAuth.Use(AuthMiddleware)
+			{
+				protectedAuth.GET("/me", MeHandler)
+				protectedAuth.POST("/refresh", RefreshTokenHandler)
+			}
+		}
+		
+		// API v1 routes
+		apiV1 := app.Group("/api/v1")
+		{
+			// Protected routes (require authentication)
+			protected := apiV1.Group("")
+			protected.Use(AuthMiddleware)
+			{
+				// User routes - any authenticated user
+				protected.GET("/profile", MeHandler) // Alias for /auth/me
+				
+				// Admin only routes
+				adminOnly := protected.Group("/admin")
+				adminOnly.Use(AdminMiddleware)
+				{
+					// Admin endpoints will be added here
+					// adminOnly.GET("/users", AdminUsersListHandler)
+					// adminOnly.GET("/stats", AdminStatsHandler)
+				}
+			}
+		}
 	})
 
 	return app

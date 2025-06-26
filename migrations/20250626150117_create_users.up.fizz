@@ -1,0 +1,11 @@
+create_table("users") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("name", "text", {null: false})
+	t.Column("email", "text", {null: false})
+	t.Column("password_hash", "text", {null: false})
+	t.Column("role", "text", {null: false, default: "user"})
+	t.Timestamps()
+}
+
+add_index("users", "email", {unique: true})
+add_index("users", "role")

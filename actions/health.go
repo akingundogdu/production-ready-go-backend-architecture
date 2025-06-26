@@ -34,7 +34,7 @@ var startTime = time.Now()
 // GET /health
 func HealthHandler(c buffalo.Context) error {
 	uptime := time.Since(startTime)
-	
+
 	response := HealthResponse{
 		Status:    "healthy",
 		Timestamp: time.Now().UTC(),
@@ -61,7 +61,7 @@ func HealthHandler(c buffalo.Context) error {
 // GET /health/live
 func LivenessHandler(c buffalo.Context) error {
 	return c.Render(http.StatusOK, r.JSON(map[string]string{
-		"status": "alive",
+		"status":    "alive",
 		"timestamp": time.Now().UTC().Format(time.RFC3339),
 	}))
 }
@@ -72,18 +72,18 @@ func checkReadiness() (bool, map[string]string) {
 		"api": "ready",
 		// Add more service checks here as they are implemented
 	}
-	
+
 	// Check if we're in a simulated not-ready state (for testing)
 	if os.Getenv("SIMULATE_NOT_READY") == "true" {
 		services["api"] = "not_ready"
 		return false, services
 	}
-	
+
 	// In the future, add real readiness checks here:
 	// - Database connection check
 	// - Cache connection check
 	// - External service dependencies
-	
+
 	return true, services
 }
 
@@ -95,7 +95,7 @@ func ReadinessHandler(c buffalo.Context) error {
 
 	status := "ready"
 	httpStatus := http.StatusOK
-	
+
 	if !ready {
 		status = "not_ready"
 		httpStatus = http.StatusServiceUnavailable
@@ -106,4 +106,4 @@ func ReadinessHandler(c buffalo.Context) error {
 		"timestamp": time.Now().UTC().Format(time.RFC3339),
 		"services":  services,
 	}))
-} 
+}
